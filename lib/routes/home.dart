@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:temperature_conversion/components/converter.dart';
 import 'package:temperature_conversion/components/history.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
+  final int _breakPoint = 500;
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(30),
+    List<Widget> pageContent;
+
+    if (MediaQuery.of(context).size.width < _breakPoint) {
+      pageContent = const [
+        Flexible(
           child: Column(
             children: [
               SizedBox(
@@ -30,6 +26,29 @@ class _HomeState extends State<Home> {
                 child: History(),
               )
             ],
+          ),
+        )
+      ];
+    } else {
+      pageContent = const [
+        Flexible(
+          child: Converter(),
+        ),
+        Flexible(
+          child: Expanded(
+            child: History(),
+          ),
+        ),
+      ];
+    }
+
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Flex(
+            direction: Axis.horizontal,
+            children: pageContent,
           ),
         ),
       ),

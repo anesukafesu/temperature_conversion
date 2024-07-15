@@ -103,7 +103,7 @@ class _ConverterState extends State<Converter> {
                         child: TextField(
                           keyboardType: TextInputType.number,
                           controller: inputController,
-                          cursorColor: Colors.white,
+                          cursorColor: Colors.grey,
                           textAlign: TextAlign.center,
                           style: temperatureValuesStyle,
                           decoration: InputDecoration(
