@@ -5,6 +5,7 @@ import 'package:temperature_conversion/components/heading.dart';
 import 'package:temperature_conversion/components/primary_action_button.dart';
 import 'package:temperature_conversion/services/converters.dart';
 import 'package:temperature_conversion/models/conversion.dart';
+import 'package:temperature_conversion/utils/format_numbers.dart';
 
 class Converter extends StatefulWidget {
   const Converter({super.key});
@@ -146,7 +147,7 @@ class _ConverterState extends State<Converter> {
                       height: 40,
                       child: Center(
                         child: Text(
-                          result.toStringAsFixed(2),
+                          formatNumbers(result),
                           style: temperatureValuesStyle,
                         ),
                       ),
